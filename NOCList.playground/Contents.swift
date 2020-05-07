@@ -50,7 +50,7 @@ let NOCList = [agentEthan, agentJim, agentClaire, agentEugene, agentFranz, agent
 func totalCompromised(agents: [(coverName:String, realName:String, accessLevel:Int, compromised:Bool)]) -> Int {
     var compromisedCount = 0
     for agent in agents {
-        if agent.compromised == true {
+        if agent.compromised {
             compromisedCount += 1
         }
     }
@@ -68,7 +68,7 @@ print("\(totalCompromised(agents: NOCList)) agents have been compromised!")
 func findCleanAgents(agents: [(coverName:String, realName:String, accessLevel:Int, compromised:Bool)]) -> [(coverName:String, realName:String, accessLevel:Int, compromised:Bool)] {
     var cleanAgents: [(coverName:String, realName:String, accessLevel:Int, compromised:Bool)] = []
     for agent in agents {
-        if agent.compromised == false {
+        if !agent.compromised {
             cleanAgents.append(agent)
             print(agent.0)
         }
@@ -88,7 +88,7 @@ print("\(cleanAgents.count) clean agents out of \(NOCList.count) total agents.")
 func findHighRisk(agents: [(coverName:String, realName:String, accessLevel:Int, compromised:Bool)]) {
     for agent in agents {
         if agent.accessLevel >= 8 {
-            if agent.compromised == true {
+            if agent.compromised {
                 print("\(agent.realName) Access Level \(agent.accessLevel) **WARNING** **COMPROMISED**")
             } else {
                 print("\(agent.realName) Access Level \(agent.accessLevel)")
