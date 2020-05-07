@@ -70,7 +70,7 @@ func findCleanAgents(agents: [(coverName:String, realName:String, accessLevel:In
     for agent in agents {
         if !agent.compromised {
             cleanAgents.append(agent)
-            print(agent.0)
+            print(agent.coverName)
         }
     }
     return cleanAgents
